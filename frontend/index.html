@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Database Query and Performance Analysis Dashboard">
+    <title>Database Performance Lab</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/api.js" defer></script>
+    <script src="js/dashboard.js" defer></script>
+    <script src="js/charts.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <h2>DB Performance Lab</h2>
+            </div>
+
+            <nav>
+                <a href="#" class="nav-link active">Dashboard</a>
+                <a href="#query-section" class="nav-link">Query Editor</a>
+                <a href="#benchmark-section" class="nav-link">Benchmark</a>
+                <a href="#index-section" class="nav-link">Index Manager</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <span>MySQL Performance Lab</span>
+                <span>Version 1.0</span>
+            </div>
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Database Query and Performance Analysis</p>
+                </div>
+
+                <div class="database-status">
+                    <span class="status-dot"></span>
+                    <span id="connection-status">Checking connection...</span>
+                </div>
+            </header>
+
+
+            <!-- Metrics -->
+            <section class="metrics-grid">
+
+                <article class="metric-card">
+                    <p>Total Employees</p>
+                    <h2 id="total-employees">--</h2>
+                </article>
+
+                <article class="metric-card">
+                    <p>Total Departments</p>
+                    <h2 id="total-departments">--</h2>
+                </article>
+
+                <article class="metric-card">
+                    <p>Average Salary</p>
+                    <h2 id="average-salary">--</h2>
+                </article>
+
+                <article class="metric-card">
+                    <p>Database Status</p>
+                    <h2 id="database-status">--</h2>
+                </article>
+
+            </section>
+
+
+            <!-- Query Editor -->
+            <section class="panel" id="query-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>SQL Query Editor</h2>
+                        <p>Execute SELECT queries against your database.</p>
+                    </div>
+                </div>
+
+                <textarea
+                    id="sql-query"
+                    placeholder="SELECT * FROM employees LIMIT 10;"
+                    spellcheck="false"
+                ></textarea>
+
+                <button id="execute-query-btn">
+                    Execute Query
+                </button>
+
+                <div id="query-message"></div>
+
+                <div class="results-container">
+                    <h3>Query Results</h3>
+
+                    <div id="query-results">
+                        Execute a query to see results.
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- Benchmark -->
+            <section class="panel" id="benchmark-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Performance Benchmark</h2>
+                        <p>Compare indexed and non-indexed query performance.</p>
+                    </div>
+                </div>
+
+                <div class="benchmark-controls">
+
+                    <div>
+                        <label for="department">Department</label>
+
+                        <select id="department">
+                            <option>Engineering</option>
+                            <option>Marketing</option>
+                            <option>HR</option>
+                            <option>Finance</option>
+                            <option>Sales</option>
+                            <option>Operations</option>
+                            <option>IT</option>
+                            <option>Research</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="iterations">Iterations</label>
+
+                        <input
+                            type="number"
+                            id="iterations"
+                            value="10"
+                            min="5"
+                            max="30"
+                        >
+                    </div>
+
+                    <button id="run-benchmark-btn">
+                        Run Comparison
+                    </button>
+
+                </div>
+
+                <div id="benchmark-results">
+                    No benchmark results yet.
+                </div>
+
+            </section>
+
+
+            <!-- Charts -->
+            <section class="panel">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Performance Analysis</h2>
+                        <p>Visual comparison of query execution times.</p>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="performance-chart"></canvas>
+                </div>
+
+            </section>
+
+
+            <!-- Index Manager -->
+            <section class="panel" id="index-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Index Management</h2>
+                        <p>Manage the department index.</p>
+                    </div>
+                </div>
+
+                <div class="index-controls">
+                    <button id="create-index-btn">
+                        Create Index
+                    </button>
+
+                    <button id="delete-index-btn">
+                        Delete Index
+                    </button>
+                </div>
+
+                <div id="index-message"></div>
+
+            </section>
+
+            <footer>
+                Database Performance Analysis System
+            </footer>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
