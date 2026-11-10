@@ -8,10 +8,10 @@ from getpass import getpass
 # ----------------------------------
 
 DB_CONFIG = {
-    "host": "localhost",
-    "user": "lab_user",
-    "password": getpass("Enter MySQL password: "),
-    "database": "performance_lab"
+    "host": os.getenv("DB_HOST", "localhost"),
+    "user": os.getenv("DB_USER","app_user"),
+    "password": os.getenv("DB_PASSWORD") or getpass("Enter MySQL password: "),
+    "database": os.getenv("DB_NAME","performance_lab")
 }
 
 # ----------------------------------
